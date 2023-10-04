@@ -47,5 +47,23 @@
                 </tr>
             </table>
         </form>
+        <?php
+        if (isset($_POST["cadastrar"])) {
+            $nome           = $_POST["nome"];
+            $agencia        = $_POST["agencia"];
+            $cpf            = $_POST["cpf"];
+            $banco          = $_POST["banco"];
+            $corrente       = $_POST["corrente"];
+            $cpf            = $_POST["cpf"];
+            $tipo           = $_POST["tipo"];
+            require "conexao.php";
+            $sql = "INSERT INTO contas(codigo, nome, cidade, cpf, email, contato, DataNascimento)";
+            $sql .= " VALUES (null, '$nome', '$cidade', '$cpf', '$email', '$contato', '$DataNascimento')";
+            mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+            echo "<script type =\"text/javascript\">alert('Cliente cadastrado com sucesso!');</script>";
+            echo "<p align='center'><a href='home.php'>Voltar</a></p>";
+        }
+        ?>
+    </div>
 </body>
 </html>
